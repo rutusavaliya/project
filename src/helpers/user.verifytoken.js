@@ -16,9 +16,9 @@ exports.userverifyToken = async (req, res, next) => {
             return res.status(401).json({ Message: 'Unauthorize' });
         else {
             let { userId } = jwt.verify(token, 'User');
-            console.log(userId);
+            // console.log(userId);
             let user = await User.findById(userId);
-            console.log(user);
+            // console.log(user);
             if (user) {
                 req.user = user;
                 next();

@@ -1,11 +1,8 @@
 const Cart = require('../model/cart.model');
 
-module.exports = class CartServieces {
+module.exports = class CartServices{
 
-    //Add new Cart
-
-
-    async addNewCart(body) {
+    async addToCart (body) {
         try {
             return await Cart.create(body);
         } catch (error) {
@@ -14,9 +11,18 @@ module.exports = class CartServieces {
         }
     };
 
-    // Get single Cart
+// GET ALL ORDER
+    async getAllCarts (body) {
+        try {
+            return await Cart.find(body).populate('cartItem');
+        } catch (error) {
+            console.log(error);
+            return error.message;            
+        }
+    };
 
-    async getCart(body) {
+// GET SPECIFIC ORDER
+    async getCart (body) {
         try {
             return await Cart.findOne(body);
         } catch (error) {
@@ -25,9 +31,8 @@ module.exports = class CartServieces {
         }
     };
 
-    // Get single CartById
-    
-    async getCartById(id) {
+// GET SPECIFIC ORDER BY ID
+    async getCartById (id) {
         try {
             return await Cart.findById(id);
         } catch (error) {
@@ -36,33 +41,32 @@ module.exports = class CartServieces {
         }
     };
 
-    //update Cart
-
-    async updateCart(id, body) {
+// DELETE ORDER
+    async deleteCart (id, body){
         try {
-            return await Cart.findByIdAndUpdate(id, { $set: body }, { new: true });
+            return await Cart.findOneAndUpdate(id, { $set: body} , { new : true });
+        } catch (error) {
+            console.log(error);
+            return error.message;  
+        }
+    };
+
+
+    async updateCart (id, body){
+        try {
+            return await Cart.findOneAndUpdate(id, { $set: body} , { new : true });
+        } catch (error) {
+            console.log(error);
+            return error.message;  
+        }
+    };
+
+    async updateMany(body) {
+        try {
+            return await Cart.updateMany(body);
         } catch (error) {
             console.log(error);
             return error.message;
         }
     };
-
-     // Get All Cart
-
-     async getAllCarts(query) {
-        try {
-            let find = [
-                { $match: { isDelete: false } },
-
-            ];
-
-            let result = await Cart.aggregate(find);
-            return result;
-        } catch (error) {
-            console.log(error);
-            return error.message;
-        }
-    }
-
-
 }

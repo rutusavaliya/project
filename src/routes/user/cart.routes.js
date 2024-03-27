@@ -7,7 +7,7 @@ const { addNewCart, getAllCart, getCart, updateCart, deleteCart } = require('../
 CartRoutes.post('/add-new-cart' , userverifyToken,   addNewCart);
 CartRoutes.get('/get-all-cart' , userverifyToken  ,getAllCart );
 CartRoutes.get('/getcart' , userverifyToken,  getCart);
-CartRoutes.put('/updtecart' , userverifyToken, updateCart);
+CartRoutes.put('/updatecart' , userverifyToken, updateCart);
 CartRoutes.delete('/deletecart' , userverifyToken , deleteCart);
 
 

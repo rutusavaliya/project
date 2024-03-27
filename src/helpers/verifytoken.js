@@ -16,9 +16,9 @@ exports.adminverifyToken = async (req, res, next) => {
             return res.status(401).json({ Message: 'Unauthorize' });
         else {
             let { adminId } = jwt.verify(token, 'Admin');
-            console.log(adminId);
+            // console.log(adminId);
             let admin = await User.findById(adminId);
-            console.log(admin);
+            // console.log(admin);
             if (admin) {
                 req.admin = admin;
                 next();
