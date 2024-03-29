@@ -1,6 +1,6 @@
 const express = require('express');
 const UserRoutes = express.Router();
-const {adminverifyToken} = require('../../helpers/verifytoken')
+const {verifyToken} = require('../../helpers/verifytoken')
 
 const {
     registerAdmin,
@@ -15,10 +15,10 @@ const {
 
 UserRoutes.post('/register-admin' , registerAdmin);
 UserRoutes.post('/login-admin' ,loginAdmin );
-UserRoutes.get('/get-all-admin' , adminverifyToken,  getAllAdmin);
-UserRoutes.get('/get-admin' , adminverifyToken, getAdmin);
-UserRoutes.put('/update-admin' , adminverifyToken, updateAdmin);
-UserRoutes.delete('/delete-admin' , adminverifyToken, deleteAdmin);
+UserRoutes.get('/get-all-admin' , verifyToken,  getAllAdmin);
+UserRoutes.get('/get-admin' , verifyToken, getAdmin);
+UserRoutes.put('/update-admin' , verifyToken, updateAdmin);
+UserRoutes.delete('/delete-admin' , verifyToken, deleteAdmin);
 
 
 

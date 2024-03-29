@@ -13,8 +13,14 @@ module.exports = class ReviewServieces {
 
     async getAllReview(query) {
         try {
+            let product = query.productId && query.productId !== undefined ? [
+                {
+                    $match: { product: query.productId }
+                }
+            ] : [];
             let find = [
                 { $match: { isDelete: false } },
+                ...product,
 
             ];
 

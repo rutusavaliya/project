@@ -74,7 +74,7 @@ exports.updateAdmin = async(req , res) => {
         if(!admin){
             return res.status(404).json({Message: 'admin is not found'});
         }
-        product = await userService.updateUser(admin._id , {...req.body});
+        admin = await userService.updateUser(admin._id , {...req.body});
         res.status(202).json({admin , Message: 'Admin is Updated'});
     } catch (error) {
         console.log(error);

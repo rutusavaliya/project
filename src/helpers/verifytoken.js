@@ -3,7 +3,7 @@ const User = require('../model/user.model');
 
 
 
-exports.adminverifyToken = async (req, res, next) => {
+exports.verifyToken = async (req, res, next) => {
     try {
         const authorization = req.headers['authorization'];
         if (authorization === undefined) {

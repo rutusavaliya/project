@@ -50,9 +50,13 @@ module.exports = class ProductServieces {
 
     async getAllProducts(query) {
         try {
+            let categoryWise = query.category && query.category !=="" ? [
+                { $match: { category: query.category} }
+            ] : [];
+            
             let find = [
-                { $match: { isDelete: false } },
-
+                { $match : { isDelete: false} },
+                ...categoryWise
             ];
 
             let result = await Product.aggregate(find);

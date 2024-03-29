@@ -8,7 +8,8 @@ const {
    getAllUser,
    getUser,
    updateUser,
-   deleteUser
+   deleteUser,
+   updatePassword
 
 
 } = require('../../controller/user/user.controller');
@@ -19,6 +20,7 @@ UserRoutes.get('/get-all-user' , userverifyToken,  getAllUser);
 UserRoutes.get('/get-user' , userverifyToken , getUser);
 UserRoutes.put('/update-user' , userverifyToken, updateUser);
 UserRoutes.delete('/delete-user' , userverifyToken, deleteUser);
+UserRoutes.put('/update-password' , userverifyToken, updatePassword);
 
 
 
